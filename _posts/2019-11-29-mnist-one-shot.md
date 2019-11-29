@@ -23,7 +23,7 @@ description: IT WORKS ON MNIST
 
 前几天看到了 Michael Nielsen 的一篇挺有趣的博客 [Reduced MNIST: how well can machines learn from small data?](Reduced MNIST: how well can machines learn from small data?)，讲的是尝试用少量的样本训练一个 MNIST 分类器。众所周知，MNIST 对于现代机器学习来说是个相对简单的 task，完整的 [MNIST 数据集](http://yann.lecun.com/exdb/mnist/) 有 50k 条的训练数据，10k 条验证数据，10k 条测试数据。用现代 CNN 结构非常容易就达到 98 - 99% 的测试准确率。但是如果不用所有训练数据，只用少量的样本进行训练呢？用多少的数据可以达到一个 90%+ 的准确率，甚至更极端的，如果每个类别只用一个样本进行训练，最高能达到多少的准确率？
 
-这是一个蛮有趣的 topic，不需要多少算力成本就可以 play around，周末两天尝试了一下，得到一些实验的结果，还有一些实验笔记和后续的想法，记录在此。注：笔者不是研究 zero/one/few shot learning 这个方向的，本文是探索性实验的一些记录，欢迎大家提意见。
+这是一个蛮有趣的 topic，不需要多少算力成本就可以 play around，周末两天尝试了一下，只使用 10 条样本，通过传统数据增强、GAN 数据增强、pretrained 模型等方法，可以在测试集上达到 68% 的预测准确率。注：笔者不是研究 zero/one/few shot learning 这个方向的，本文是探索性实验的一些结果和想法的记录，欢迎大家提意见。
 
 本文相关代码在这里: [borgwang/toys/mnist-one-shot](https://github.com/borgwang/toys/tree/master/mnist-one-shot)
 
