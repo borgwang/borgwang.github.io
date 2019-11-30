@@ -3,9 +3,16 @@ layout: post
 title:  十个样本训练 MNIST 分类器
 date: 2019-11-29
 categories: DL
-description: IT WORKS ON MNIST
+description: You only have one shot.
 ---
 
+<!--START figure-->
+<div class="figure">
+  <a href="https://tva1.sinaimg.cn/large/006tNbRwly1g9g0ojqaifj316q0ighdt.jpg" data-lightbox="mnist-head-figure">
+    <img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9g0ojqaifj316q0ighdt.jpg" width="100%" alt="mnist-head-figure" referrerPolicy="no-referrer"/>
+  </a>
+</div>
+<!--END figure-->
 
 #### 目录
 
