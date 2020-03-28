@@ -208,13 +208,13 @@ print(gaussian_kernel_vectorization(x, x, l=500, sigma=10))
 </div>
 <!--END figure-->
 
-接下来我们用公式推导上图的过程。将高斯过程的先验表示为 $$ f(\boldsymbol{x}) \sim \mathcal{N}(\boldsymbol{\mu}_{f}, K_{ff}) $$，对应左上角第一幅图，如果现在我们观测到一些数据 $$ (\boldsymbol{x'}, \boldsymbol{y}) $$ ，并且假设 $$ \boldsymbol{y} $$ 与 $$ f(\boldsymbol{x}) $$ 服从联合高斯分布
+接下来我们用公式推导上图的过程。将高斯过程的先验表示为 $$ f(\boldsymbol{x}) \sim \mathcal{N}(\boldsymbol{\mu}_{f}, K_{ff}) $$，对应左上角第一幅图，如果现在我们观测到一些数据 $$ (\boldsymbol{x^{*}}, \boldsymbol{y^{*}}) $$ ，并且假设 $$ \boldsymbol{y^{*}} $$ 与 $$ f(\boldsymbol{x}) $$ 服从联合高斯分布
 <!--START formula-->
   <div class="formula">
     $$
     \begin{bmatrix}
     f(\boldsymbol{x})\\
-    \boldsymbol{y}\\
+    \boldsymbol{y^{*}}\\
     \end{bmatrix} \sim \mathcal{N} \left(
     \begin{bmatrix}
     \boldsymbol{\mu_f}\\
@@ -229,14 +229,14 @@ print(gaussian_kernel_vectorization(x, x, l=500, sigma=10))
   </div>
 <!--END formula-->
 
- 其中 $$ K_{ff} = \kappa(\boldsymbol{x}, \boldsymbol{x}) $$ ，$$ K_{fy}=\kappa(\boldsymbol{x}, \boldsymbol{x'}) $$，$$ K_{yy} = \kappa(\boldsymbol{x'}, \boldsymbol{x'}) $$ ，则有
+ 其中 $$ K_{ff} = \kappa(\boldsymbol{x}, \boldsymbol{x}) $$ ，$$ K_{fy}=\kappa(\boldsymbol{x}, \boldsymbol{x^{*}}) $$，$$ K_{yy} = \kappa(\boldsymbol{x^{*}}, \boldsymbol{x^{*}}) $$ ，则有
  <!--START formula-->
    <div class="formula">
-     $$ f|\boldsymbol{y} \sim \mathcal{N}(K_{fy}K_{yy}^{-1}\boldsymbol{y}+\boldsymbol{\mu_f},K_{ff}-K_{fy}K_{yy}^{-1}K_{fy}^T) \tag{5}$$
+     $$ f \sim \mathcal{N}(K_{fy}^{T}K_{ff}^{-1}\boldsymbol{y}+\boldsymbol{\mu_f},K_{yy}-K_{fy}^{T}K_{ff}^{-1}K_{fy}) \tag{5}$$
    </div>
  <!--END formula-->
 
-公式（5）表明了给定数据 $$ (\boldsymbol{x'}, \boldsymbol{y}) $$ 之后函数的分布 $$ f $$ 仍然是一个高斯过程，具体的推导可见 [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/chapters/RW.pdf)。这个式子可以看出一些有趣的性质，**均值 $$ K_{fy}K_{yy}^{-1}(y-\boldsymbol{\mu_y})+\boldsymbol{\mu_f} $$ 实际上是观测点 $$ \boldsymbol{y} $$ 的一个线性函数**，协方差项 $$ K_{ff}-K_{fy}K_{yy}^{-1}K_{fy}^T $$ 的第一部分 $$ K_{ff} $$ 是我们的先验的协方差，**减掉的后面的那一项实际上表示了观测到数据后函数分布不确定性的减少**，如果第二项非常接近于 0，说明观测数据后我们的不确定性几乎不变，反之如果第二项非常大，则说明不确定性降低了很多。
+公式（5）表明了给定数据 $$ (\boldsymbol{x^{*}}, \boldsymbol{y^{*}}) $$ 之后函数的分布 $$ f $$ 仍然是一个高斯过程，具体的推导可见 [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/chapters/RW.pdf)。这个式子可以看出一些有趣的性质，**均值 $$K_{fy}^{T}K_{ff}^{-1}\boldsymbol{y}+\boldsymbol{\mu_f}$$ 实际上是观测点 $$ \boldsymbol{y} $$ 的一个线性函数**，协方差项 $$K_{yy}-K_{fy}^{T}K_{ff}^{-1}K_{fy}$$ 的第一部分 $$ K_{yy} $$ 是我们的先验的协方差，**减掉的后面的那一项实际上表示了观测到数据后函数分布不确定性的减少**，如果第二项非常接近于 0，说明观测数据后我们的不确定性几乎不变，反之如果第二项非常大，则说明不确定性降低了很多。
 
 上式其实就是高斯过程回归的基本公式，首先有一个高斯过程先验分布，观测到一些数据（机器学习中的训练数据），基于先验和一定的假设（联合高斯分布）计算得到高斯过程后验分布的均值和协方差。
 
@@ -270,13 +270,13 @@ class GPR:
             return
 
         X = np.asarray(X)
-        Kff = self.kernel(X, X)  # (N,N)
-        Kyy = self.kernel(self.train_X, self.train_X) # (k,k)
-        Kfy = self.kernel(X, self.train_X)  # (N,k)
-        Kyy_inv = np.linalg.inv(Kyy + 1e-8 * np.eye(len(self.train_X)))  # (k,k)
-
-        mu = Kfy.dot(Kyy_inv).dot(self.train_y)
-        cov = self.kernel(X, X) - Kfy.dot(Kyy_inv).dot(Kfy.T)
+        Kff = self.kernel(self.train_X, self.train_X)  # (N, N)
+        Kyy = self.kernel(X, X)  # (k, k)
+        Kfy = self.kernel(self.train_X, X)  # (N, k)
+        Kff_inv = np.linalg.inv(Kff + 1e-8 * np.eye(len(self.train_X)))  # (N, N)
+        
+        mu = Kfy.T.dot(Kff_inv).dot(self.train_y)
+        cov = Kyy - Kfy.T.dot(Kff_inv).dot(Kfy)
         return mu, cov
 
     def kernel(self, x1, x2):
