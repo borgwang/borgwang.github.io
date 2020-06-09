@@ -8,11 +8,15 @@ permalink: /about/
 
 I am a Senior Machine Learning Engineer on [Tencent](https://tencent.com/) working on computational advertising. Previouly, I was a Machine Learning Engineer at [AInnovation](https://www.ainnovation.com) working on AI-related products and solutions for entrerprises. I received my Master's Degree from [Sun Yat-Sen University](http://www.sysu.edu.cn) majoring in Computer Science. I am interested in applications of ML & DL on different industries.
 
+<br>
+
 #### Pet Projects
 
 - [reinfore_py](https://github.com/borgwang/reinforce_py): Implementations of popular Reinforcement Learning algorithms using Python and Tensorflow.
 - [tinynn](https://github.com/borgwang/tinynn): A lightweight deep learning framework written in Python.
 - [tinyml](https://github.com/borgwang/tinyml): Implementation of classic machine learning algorithms with sklearn-style API.
+
+<br>
 
 #### Links
 
