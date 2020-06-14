@@ -8,7 +8,7 @@ description: A simple neural net implementation without deep learning framework.
 
 <br>
 
-本文对神经网络前向和反向传播进行推导，并基于 Python + Numpy 实现了一个简单的全连接网络进行多分类任务，在[Iris 数据集](https://archive.ics.uci.edu/ml/datasets/iris)上进行测试。
+本文对全连接神经网络前向和反向传播进行推导，并基于 Python + Numpy 实现了一个简单的全连接网络进行多分类任务，并在[Iris 数据集](https://archive.ics.uci.edu/ml/datasets/iris)上进行测试。
 
 <br>
 
@@ -35,7 +35,7 @@ description: A simple neural net implementation without deep learning framework.
 </div>
 <!--END figure-->
 
-输入数据 X 经过一层隐层，激活函数采用 ReLU，输出层采用 softmax 函数进行归一转化成分类概率。网络 Forward 过程计算如下：
+输入数据 X 经过一层隐层，激活函数采用 [ReLU](https://en.wikipedia.org/wiki/Rectifier_(neural_networks))，输出层采用 [Softmax](https://en.wikipedia.org/wiki/Softmax_function) 函数进行归一转化成分类概率。网络 Forward 过程计算如下：
 
 <!--START formula-->
   <div class="formula">
@@ -70,7 +70,7 @@ p = softmax(h2)
 
 ### 参数初始化  
 
-神经网络的参数初始化在很多时候对模型性能的影响非常大，不恰当的初始化方式会导致学习缓慢甚至失败（比如全零初始化）。关于参数的初始化方法有很多更深入的研究，可以参考[CS231 weight_initialization](http://cs231n.github.io/neural-networks-2/#init)。这里采用常用的[Xavier](http://proceedings.mlr.press/v9/glorot10a/glorot10a.pdf)方法初始化，即参数 W 从下面的均匀分布中采样得到：
+神经网络的参数初始化在很多时候对模型训练影响非常大，不恰当的初始化方式会导致学习缓慢甚至失败（比如全零初始化）。关于参数的初始化方法有很多更深入的研究，可以参考 [CS231 weight_initialization](http://cs231n.github.io/neural-networks-2/#init)。这里采用常用的[Xavier](http://proceedings.mlr.press/v9/glorot10a/glorot10a.pdf) 方法初始化，即参数 W 从下面的均匀分布中采样得到：
 
 <!--START formula-->
   <div class="formula">
@@ -104,11 +104,11 @@ b2 = np.zeros(3)
 
 <!--START formula-->
   <div class="formula">
-    $$ L_{NLL}=-\sum_{i}y_i \log p_i $$
+    $$ L_{NLL}=-\frac{1}{N}\sum^N_{i}y_i \log p_i $$
   </div>
 <!--END formula-->
 
->其中 $$ p_i $$ 是网络对第 i 类的输出 logits（即预测概率）， $$ y_i $$ 为第 i 类对应的 label（0 或 1）
+>其中 $$ p_i $$ 是网络对第 i 类的输出（即预测概率）， $$ y_i $$ 为第 i 类对应的 label。
 
 <br>
 
@@ -138,7 +138,7 @@ b2 = np.zeros(3)
   </div>
 <!--END formula-->
 
-假设输出是 k 维，则$$ P 和 h_2 $$ 都是 k 维向量，我们需要求 $$ \frac{\partial p_i}{\partial h_{2j}}，其中 i, j \in 1,...,k $$。
+假设输出是 k 维，则 $$P$$ 和 $$h_2$$ 都是 k 维向量，我们需要求 $$\frac{\partial p_i}{\partial h_{2j}}$$，其中 $$i, j \in 1,...,k$$。
 
 这里分两种情况讨论，对于 $$ i=j $$：
 
