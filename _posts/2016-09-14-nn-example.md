@@ -104,7 +104,7 @@ b2 = np.zeros(3)
 
 <!--START formula-->
   <div class="formula">
-    $$ L_{NLL}=-\frac{1}{N}\sum^N_{i}y_i \log p_i $$
+    $$ L_{NLL}=-\sum_{i}y_i \log p_i $$
   </div>
 <!--END formula-->
 
