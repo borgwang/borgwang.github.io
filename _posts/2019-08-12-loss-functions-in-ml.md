@@ -318,7 +318,7 @@ Huber Loss 结合了 MSE 和 MAE 损失，在误差接近 0 时使用 MSE，使�
 
 <!--START formula-->
 <div class="formula">
-  $$ p(y_i|x_i) = \prod_{k=1}^K(\hat{y_i^k})^{y_i^k} $$
+  $$ p(y_i|x_i) = \prod_{k=1}^K(\hat{y_i}^k)^{y_i^k} $$
 </div>
 <!--END formula-->
 
@@ -326,7 +326,7 @@ Huber Loss 结合了 MSE 和 MAE 损失，在误差接近 0 时使用 MSE，使�
 
 <!--START formula-->
 <div class="formula">
-  $$ NLL(x, y) = J_{CE} = -\sum_{i=1}^N\sum_{k=1}^K y_i^k \mathbb{log}(\hat{y_i^k}) $$
+  $$ NLL(x, y) = J_{CE} = -\sum_{i=1}^N\sum_{k=1}^K y_i^k \mathbb{log}(\hat{y_i}^k) $$
 </div>
 <!--END formula-->
 
@@ -334,7 +334,7 @@ Huber Loss 结合了 MSE 和 MAE 损失，在误差接近 0 时使用 MSE，使�
 
 <!--START formula-->
 <div class="formula">
-  $$ J_{CE} = -\sum_{i=1}^N y_i^{c_i}\mathbb{log}(\hat{y_i^{c_i}}) $$
+  $$ J_{CE} = -\sum_{i=1}^N y_i^{c_i}\mathbb{log}(\hat{y_i}^{c_i}) $$
 </div>
 <!--END formula-->
 
@@ -350,7 +350,7 @@ Huber Loss 结合了 MSE 和 MAE 损失，在误差接近 0 时使用 MSE，使�
 
 <!--START formula-->
 <div class="formula">
-  $$ KL(p, q)=\sum_{k=1}^Kp\mathbb{log}(p) - \sum_{k=1}^Kp\mathbb{log}(q) $$
+  $$ KL(p, q)=\sum_{k=1}^Kp^k\mathbb{log}(p^k) - \sum_{k=1}^Kp^k\mathbb{log}(q^k) $$
 </div>
 <!--END formula-->
 
@@ -358,7 +358,7 @@ Huber Loss 结合了 MSE 和 MAE 损失，在误差接近 0 时使用 MSE，使�
 
 <!--START formula-->
 <div class="formula">
-  $$ KL(y_i^{\star}, \hat{y_i})=\sum_{k=1}^Ky_i^{\star}\mathbb{log}(y_i^{\star}) - \sum_{k=1}^Ky_i^{\star}\mathbb{log}(\hat{y_i}) $$
+  $$ KL(y_i^{\star}, \hat{y_i})=\sum_{k=1}^Ky_i^{\star k}\mathbb{log}(y_i^{\star k}) - \sum_{k=1}^Ky_i^{\star k}\mathbb{log}(\hat{y_i}^k) $$
 </div>
 <!--END formula-->
 
@@ -366,7 +366,7 @@ Huber Loss 结合了 MSE 和 MAE 损失，在误差接近 0 时使用 MSE，使�
 
 <!--START formula-->
 <div class="formula">
-  $$ \sum_{k=1}^Ky_i^{\star}\mathbb{log}(\hat{y_i}) $$
+  $$ \sum_{k=1}^Ky_i^{\star k}\mathbb{log}(\hat{y_i}^k) $$
 </div>
 <!--END formula-->
 
@@ -374,7 +374,7 @@ Huber Loss 结合了 MSE 和 MAE 损失，在误差接近 0 时使用 MSE，使�
 
 <!--START formula-->
 <div class="formula">
-  $$ - \sum_{k=1}^Ky_i\mathbb{log}(\hat{y_i}) $$
+  $$ - \sum_{k=1}^Ky_i^k\mathbb{log}(\hat{y_i}^k) $$
 </div>
 <!--END formula-->
 
@@ -382,7 +382,7 @@ Huber Loss 结合了 MSE 和 MAE 损失，在误差接近 0 时使用 MSE，使�
 
 <!--START formula-->
 <div class="formula">
-  $$ J_{KL} = -\sum_{i=1}^N\sum_{k=1}^K y_i^k \mathbb{log}(\hat{y_i^k})=-\sum_{i=1}^N y_i^{c_i}\mathbb{log}(\hat{y_i^{c_i}}) $$
+  $$ J_{KL} = -\sum_{i=1}^N\sum_{k=1}^K y_i^k \mathbb{log}(\hat{y_i}^k)=-\sum_{i=1}^N y_i^{c_i}\mathbb{log}(\hat{y_i}^{c_i}) $$
 </div>
 <!--END formula-->
 
