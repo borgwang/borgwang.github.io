@@ -6,7 +6,7 @@ permalink: /about/
 
 #### Bio
 
-I am a Senior Machine Learning Engineer at [Tencent](https://tencent.com/) working on computational advertising. Previously, I was a Machine Learning Engineer at [AInnovation](https://www.ainnovation.com) where we built AI-related products for enterprises. I received my Master's Degree from [Sun Yat-Sen University](http://www.sysu.edu.cn).  I am interested in applications of ML & DL in different industries.
+I am a Machine Learning Engineer at [Tencent](https://tencent.com/) working on Computational Advertising. Previously, I was a Machine Learning Engineer at [AInnovation](https://www.ainnovation.com) where we built AI-related products for enterprises. I received my Master's Degree from [Sun Yat-Sen University](http://www.sysu.edu.cn).  I am interested in applications of ML & DL in different industries.
 
 <br>
 
