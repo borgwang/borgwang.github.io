@@ -41,7 +41,7 @@ description: GPs are not so fancy.
 我们从最简单最常见的一元高斯分布开始，其概率密度函数为
 <!--START formula-->
   <div class="formula">
-    $$ p(x) = \frac{1}{\sigma\sqrt{2\pi}}\mathrm{exp}(-\frac{(x-\mu)^2}{2\sigma^2}) \tag{1}$$
+    $$ p(x) = \frac{1}{\sigma\sqrt{2\pi}}\exp (-\frac{(x-\mu)^2}{2\sigma^2}) \tag{1}$$
   </div>
 <!--END formula-->
 
@@ -54,7 +54,7 @@ description: GPs are not so fancy.
 从一元高斯分布推广到多元高斯分布，假设各维度之间相互独立
 <!--START formula-->
   <div class="formula">
-    $$ p(x_1, x_2, ..., x_n) = \prod_{i=1}^{n}p(x_i)=\frac{1}{(2\pi)^{\frac{n}{2}}\sigma_1\sigma_2...\sigma_n}\mathrm{exp}\left(-\frac{1}{2}\left [\frac{(x_1-\mu_1)^2}{\sigma_1^2} + \frac{(x_2-\mu_2)^2}{\sigma_2^2} + ... + \frac{(x_n-\mu_n)^2}{\sigma_n^2}\right]\right) \tag{2}$$
+    $$ p(x_1, x_2, ..., x_n) = \prod_{i=1}^{n}p(x_i)=\frac{1}{(2\pi)^{\frac{n}{2}}\sigma_1\sigma_2...\sigma_n}\exp \left(-\frac{1}{2}\left [\frac{(x_1-\mu_1)^2}{\sigma_1^2} + \frac{(x_2-\mu_2)^2}{\sigma_2^2} + ... + \frac{(x_n-\mu_n)^2}{\sigma_n^2}\right]\right) \tag{2}$$
   </div>
 <!--END formula-->
 
@@ -94,7 +94,7 @@ description: GPs are not so fancy.
 代入上式得到
 <!--START formula-->
   <div class="formula">
-    $$ p(\boldsymbol{x}) = (2\pi)^{-\frac{n}{2}}|K|^{-\frac{1}{2}}\mathrm{exp}\left( -\frac{1}{2}(\boldsymbol{x-\mu})^TK^{-1}(\boldsymbol{x-\mu}) \right) \tag{3} $$
+    $$ p(\boldsymbol{x}) = (2\pi)^{-\frac{n}{2}}|K|^{-\frac{1}{2}}\exp \left( -\frac{1}{2}(\boldsymbol{x-\mu})^TK^{-1}(\boldsymbol{x-\mu}) \right) \tag{3} $$
   </div>
 <!--END formula-->
 其中 $$ \boldsymbol{\mu} \in \mathbb{R}^n $$ 是均值向量， $$ K \in \mathbb{R}^{n \times n} $$ 为协方差矩阵，由于我们假设了各维度直接相互独立，因此 $$ K $$ 是一个对角矩阵。在各维度变量相关时，上式的形式仍然一致，但此时协方差矩阵 $$ K $$ 不再是对角矩阵，只具备半正定和对称的性质。上式通常也简写为
@@ -159,7 +159,7 @@ description: GPs are not so fancy.
 
 <!--START formula-->
   <div class="formula">
-    $$ K(x_i,x_j)=\sigma^2\mathrm{exp}\left( -\frac{\left \|x_i-x_j\right \|_2^2}{2l^2}\right) $$
+    $$ K(x_i,x_j)=\sigma^2\exp \left( -\frac{\left \|x_i-x_j\right \|_2^2}{2l^2}\right) $$
   </div>
 <!--END formula-->
 
@@ -274,7 +274,7 @@ class GPR:
         Kyy = self.kernel(X, X)  # (k, k)
         Kfy = self.kernel(self.train_X, X)  # (N, k)
         Kff_inv = np.linalg.inv(Kff + 1e-8 * np.eye(len(self.train_X)))  # (N, N)
-        
+
         mu = Kfy.T.dot(Kff_inv).dot(self.train_y)
         cov = Kyy - Kfy.T.dot(Kff_inv).dot(Kfy)
         return mu, cov

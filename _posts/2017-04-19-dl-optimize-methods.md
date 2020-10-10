@@ -103,7 +103,7 @@ NAG 方法也是属于一种利用动量的方法，与 Momentum 的区别是：
 
 <!--START formula-->
   <div class="formula">
-    $$ \theta_{t+1,i}=\theta_{t,i}-\frac{\eta}{\sqrt{G_{t,ii}+\epsilon}}\cdot g_{t,i} $$
+    $$ \theta_{t+1,i}=\theta_{t,i}-\frac{\eta}{\sqrt{G_{t,ii}+\epsilon}} g_{t,i} $$
   </div>
 <!--END formula-->
 
@@ -134,7 +134,7 @@ Adagrad 调整项的分母是 $$ \sqrt{G_{t,ii}+\epsilon} $$ ，其中 $$ G_{t,i
 
 <!--START formula-->
   <div class="formula">
-    $$ \Delta \theta_t=\frac{\eta}{\sqrt{E[g^2]_t+\epsilon}}\cdot g_t $$
+    $$ \Delta \theta_t=\frac{\eta}{\sqrt{E[g^2]_t+\epsilon}} g_t $$
   </div>
 <!--END formula-->
 
@@ -168,7 +168,7 @@ Adagrad 调整项的分母是 $$ \sqrt{G_{t,ii}+\epsilon} $$ ，其中 $$ G_{t,i
 
 <!--START formula-->
   <div class="formula">
-    $$ \Delta\theta_t=\frac{RMS[\Delta\theta]_{t-1}}{RMS[g]_t}\cdot g_t $$
+    $$ \Delta\theta_t=\frac{RMS[\Delta\theta]_{t-1}}{RMS[g]_t} g_t $$
     $$ \theta_{t+1}=\theta_t-\Delta\theta_t $$
   </div>
 <!--END formula-->
@@ -204,7 +204,7 @@ RMSProp 其实可以看作是 Adadelta 的一个特例（没有考虑单位统�
 <!--START formula-->
   <div class="formula">
     $$ E[g^2]_t=\gamma E[g^2]_{t-1}+(1-\gamma)g_t^2 $$
-    $$ \Delta\theta_t=\frac{\eta}{\sqrt{E[g^2]_t+\epsilon}}\cdot g_t $$
+    $$ \Delta\theta_t=\frac{\eta}{\sqrt{E[g^2]_t+\epsilon}} g_t $$
   </div>
 <!--END formula-->
 
