@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 「程序化广告——个性化精准投放实用手册」读书笔记
+title: 「程序化广告—个性化精准投放实用手册」笔记
 date: 2020-04-19
-categories: readings
+categories: AdTech
 description: Overview of Programmatic Advertising
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 「最重要的事——只有一件」读书笔记
+title: 「最重要的事，只有一件」读书笔记
 date: 2020-03-28
 categories: readings
 description: 你只需要把最重要的事情做到极致
