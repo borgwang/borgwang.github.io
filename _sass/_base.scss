@@ -38,9 +38,9 @@
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .container {
-  position:relative;
+  position: relative;
   width: 100%;
-  max-width: 1024px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 10px 10px;
   box-sizing: border-box;
@@ -353,11 +353,14 @@ pre > code {
 
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+table {
+  margin: 2rem auto; }
 th,
 td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #E1E1E1; }
+  padding: 8px 12px;
+  text-align: center;
+  border-bottom: 1px solid #E1E1E1;
+  font-size: 90%; }
 th:first-child,
 td:first-child {
   padding-left: 0; }
@@ -391,7 +394,8 @@ form {
 
 
 p {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.625rem;
+  margin-top: 0.625rem
 }
 
 /* Utilities
@@ -447,10 +451,9 @@ blockquote {
   margin: 1.5rem 0;
   padding: 0 0 0 10px;
   font-style: normal;
-  font-size: 100%;
-  line-height: 2rem;
-  border-left: 4px solid #D0E5F2;
-  font-size: 1.5rem;
+  line-height: 2.3rem;
+  border-left: 3px solid #D0E5F2;
+  font-size: 1.4rem;
 }
 
 /* Formular */

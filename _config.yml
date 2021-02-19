@@ -1,26 +1,17 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
+# site settings
 title: Guibo Wang
 email: borgwang@126.com
+
 # baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://borgwang.github.io" # the base hostname & protocol for your site
 github_username:  borgwang
 weibo_username:  badbobobo
 
-# Build settings
+# build settings
 markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-
-# used this for post_excerpt at index_page
-# excerpt_separator: <!--description-->
 
 sass:
   sass_dir:     _sass
