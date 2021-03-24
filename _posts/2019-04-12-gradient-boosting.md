@@ -8,9 +8,7 @@ description: Boosting like a boss.
 
 <!--START figure-->
 <div class="figure">
-  <a data-lightbox="gps_are_not_so_fancy" href="https://ws3.sinaimg.cn/large/006tNc79ly1g2rzi5q7wwj31aj0fv0xt.jpg">
-    <img src="https://ws3.sinaimg.cn/large/006tNc79ly1g2rzi5q7wwj31aj0fv0xt.jpg" width="100%" alt="" referrerPolicy="no-referrer"/>
-  </a>
+  <img src="/assets/assets-2019-04-12-gradient-boosting/image-20210324112304743.png" width="100%" alt="" referrerPolicy="no-referrer"/>
 </div>
 <!--END figure-->
 
@@ -146,9 +144,7 @@ MyGradientBoostingRegressor train_score: 0.7121 valid_score: 0.7054
 
 <!--START figure-->
 <div class="figure">
-  <a href="https://ws4.sinaimg.cn/large/006tNc79ly1g2rlvr71q6j30cf085wey.jpg" data-lightbox="gbr_plotting">
-    <img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2rlvr71q6j30cf085wey.jpg" width="60%" alt="gb_regression_plotting" referrerPolicy="no-referrer"/>
-  </a>
+  <img src="/assets/assets-2019-04-12-gradient-boosting/image-20210324112355550.png" width="60%" alt="gb_regression_plotting"/>
 </div>
 <!--END figure-->
 
@@ -243,9 +239,7 @@ MyGradientBoostingRegressor train_score: 0.7171 valid_score: 0.8361
 
 <!--START figure-->
 <div class="figure">
-  <a href="https://ws2.sinaimg.cn/large/006tNc79ly1g2rm3lpighj30cj07xjs1.jpg" data-lightbox="gb_classification_plotting">
-    <img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2rm3lpighj30cj07xjs1.jpg" width="60%" alt="gb_classification_plotting" referrerPolicy="no-referrer"/>
-  </a>
+  <img src="/assets/assets-2019-04-12-gradient-boosting/image-20210324112412201.png" width="60%" alt="gb_classification_plotting"/>
 </div>
 <!--END figure-->
 
