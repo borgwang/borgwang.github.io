@@ -206,7 +206,7 @@ description: Overview of Programmatic Advertising
 
 #### 相关技术问题
 
-##### RTB 竞价逻辑 
+##### RTB 竞价逻辑
 
 - RTB 竞价流程
 

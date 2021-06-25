@@ -6,11 +6,9 @@ categories: ML
 description: Boosting like a boss.
 ---
 
-<!--START figure-->
 <div class="figure">
   <img src="/assets/assets-2019-04-12-gradient-boosting/image-20210324112304743.png" width="100%" alt="" referrerPolicy="no-referrer"/>
 </div>
-<!--END figure-->
 
 本文主要是记下在学习 Gradient Boosting 算法过程中的一些推导、笔记和思考。
 
@@ -135,8 +133,8 @@ def fit(self, train_X, train_y):
 
 模型超参数设定为 n_estimators 为 300， max_depth 为 5，lr 为 0.1，数据集选用 [BlackFridy](https://www.kaggle.com/mehdidag/black-friday)，这个数据集总共有 11 维特征，537577 条数据，按照 0.8/0.2 随机划分训练集和验证集。首先我们拿这个模型与 sklearn 的 GradientBoostingRegressor 进行对比如下，可以看到结果差不多。
 
-```bash
-GradientBoostingRegressor train_score: 0.7106 valid_score: 0.7037  
+```
+GradientBoostingRegressor train_score: 0.7106 valid_score: 0.7037
 MyGradientBoostingRegressor train_score: 0.7121 valid_score: 0.7054
 ```
 
@@ -266,5 +264,4 @@ MyGradientBoostingRegressor train_score: 0.7171 valid_score: 0.8361
 
 本文对 Gradient Boosting 算法的思想、原理和推导进行了阐述，对以 CART 回归树作为弱学习器的 GBDT 分类和回归算法进行了介绍，并附上了简单的代码实验。在经典机器学习场景中，以 GBDT 为代表的 Gradient Boosting 算法效果优秀，得到了广泛的应用，是一类值得深入探索的经典机器学习算法。更多关于 Gradient Boosting 的内容，可以阅读 [Greedy Function Approximation: A Gradient Boosting Machine](https://statweb.stanford.edu/~jhf/ftp/trebst.pdf), [XGBoost: A Scalable Tree Boosting System](https://arxiv.org/abs/1603.02754) 等经典 paper。
 
-<br>
-<br>
+<br><br>

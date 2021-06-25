@@ -245,5 +245,4 @@ description: Bidding Mechanism
 - [https://zoo.cs.yale.edu/classes/cs455/fall11/gsp_presentation.pdf](https://zoo.cs.yale.edu/classes/cs455/fall11/gsp_presentation.pdf)
 - [https://www.economics.utoronto.ca/damiano/ps426/lecture11-handout.pdf](https://www.economics.utoronto.ca/damiano/ps426/lecture11-handout.pdf)
 
-<br>
-
+<br><br>

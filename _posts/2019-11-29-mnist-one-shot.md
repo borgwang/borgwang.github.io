@@ -178,12 +178,12 @@ GAN（[Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)） 是�
 from torchvision.models import resnet18
 
 class MnistResNet(nn.Module):
-  
+
   def __init__(self):
     super().__init__()
     self.conv = nn.Conv2d(1, 3, kernel_size=1)
     self.resnet = resnet18(pretrained=True)
-    
+
   def forward(self, x):
     out = self.conv(x)
     out = self.resnet(out)

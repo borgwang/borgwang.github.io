@@ -7,7 +7,7 @@ categories: ML
 
 <br>
 
-## Abstract  
+## Abstract
 
 总结一下机器学习中常用的距离度量、相似度度量，以及两者之间的联系。
 
@@ -15,7 +15,8 @@ categories: ML
 
 ## Euclidean Space Distance
 
-#### Euclidean distance  
+#### Euclidean distance
+
 <!--START formula-->
   <div class="formula">
     $$ d(u,v)=\|u-v\|^2=\sqrt{\sum_{i=1}^{n}(u_i-v_i)^2} $$
@@ -30,7 +31,7 @@ categories: ML
   </div>
 <!--END formula-->
 
-#### Minkowski distance  
+#### Minkowski distance
 
 <!--START formula-->
   <div class="formula">
@@ -38,7 +39,7 @@ categories: ML
   </div>
 <!--END formula-->
 
-#### Chebyshev distance  
+#### Chebyshev distance
 
 <!--START formula-->
   <div class="formula">
@@ -50,11 +51,13 @@ categories: ML
 The Hamming distance between two strings of equal length is the number of positions at which the corresponding symbols are different.
 
 #### Mahalanobis Distance
-马氏距离基本思路就是对原数据进行坐标旋转，使得旋转后各个维度尽量线性无关；再进行缩放，使得各个维度经过缩放后方差都为 1；最后计算经过变换后的数据的欧式距离即为马氏距离。  
+马氏距离基本思路就是对原数据进行坐标旋转，使得旋转后各个维度尽量线性无关；再进行缩放，使得各个维度经过缩放后方差都为 1；最后计算经过变换后的数据的欧式距离即为马氏距离。
 
-## Similarity  
+<br>
 
-#### Cosine similarity  
+## Similarity
+
+#### Cosine similarity
 
 <!--START formula-->
   <div class="formula">
@@ -62,7 +65,7 @@ The Hamming distance between two strings of equal length is the number of positi
   </div>
 <!--END formula-->
 
-#### Pearson Correlation Coefficient   
+#### Pearson Correlation Coefficient
 
 <!--START formula-->
   <div class="formula">
@@ -78,7 +81,7 @@ The Hamming distance between two strings of equal length is the number of positi
   </div>
 <!--END formula-->
 
-#### KL-divergence  
+#### KL-divergence
 KL divergence is a measure of how one probability distribution diverges from a second expected probability distribution.
 
 <!--START formula-->
@@ -105,13 +108,16 @@ We can define
 
 so that it satisfies symmetry.
 
-## Note  
+<br>
+
+## Note
+
 <u>Distance is lack of similarity and similarity is resemblance</u>. Some authors prefer to use the term ‘dissimilarity’ instead of distance.
 
 Distance satisfy three conditions: reflexivity, symmetry, and
-triangular inequality.  
+triangular inequality.
 (Consider three points a, b, and c describing a triangle in a 2D-space)
-- reflexivity  
+- reflexivity
 
 <!--START formula-->
   <div class="formula">
@@ -119,7 +125,7 @@ triangular inequality.
   </div>
 <!--END formula-->
 
-- symmetry  
+- symmetry
 
 <!--START formula-->
   <div class="formula">
@@ -127,7 +133,7 @@ triangular inequality.
   </div>
 <!--END formula-->
 
-- triangular inequality  
+- triangular inequality
 
 <!--START formula-->
   <div class="formula">
@@ -135,12 +141,12 @@ triangular inequality.
   </div>
 <!--END formula-->
 
-Similarity is a measure of the resemblance between data sets.   
-Similarity only satisfies symmetry condition. The similarity of a vector to itself is 1, $$ S(a, a)=1 $$. Similarity can be negative while Distance only adopts non-negative values.   
+Similarity is a measure of the resemblance between data sets.
+Similarity only satisfies symmetry condition. The similarity of a vector to itself is 1, $$ S(a, a)=1 $$. Similarity can be negative while Distance only adopts non-negative values.
 We can arithmetically average, add, or subtract
 distances to compute new distances, but we cannot do the same with similarities.
 
-Similarity can be transform to distance metric using following tricks:  
+Similarity can be transform to distance metric using following tricks:
 
 <!--START formula-->
   <div class="formula">

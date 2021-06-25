@@ -23,7 +23,7 @@ description: A simple neural net implementation without deep learning framework.
 
 ---
 
-### 网络结构  
+### 网络结构
 
 定义一个最简单的 Fully-connected neural network 进行多分类任务，只包含一层隐层，结构如下图
 
@@ -66,9 +66,10 @@ h2 = np.dot(a1, W2) + b2
 p = softmax(h2)
 ```
 <!--END codeblock-->
+
 <br>
 
-### 参数初始化  
+### 参数初始化
 
 神经网络的参数初始化在很多时候对模型训练影响非常大，不恰当的初始化方式会导致学习缓慢甚至失败（比如全零初始化）。关于参数的初始化方法有很多更深入的研究，可以参考 [CS231 weight_initialization](http://cs231n.github.io/neural-networks-2/#init)。这里采用常用的[Xavier](http://proceedings.mlr.press/v9/glorot10a/glorot10a.pdf) 方法初始化，即参数 W 从下面的均匀分布中采样得到：
 
@@ -112,7 +113,7 @@ b2 = np.zeros(3)
 
 <br>
 
-### 反向传播  
+### 反向传播
 
 梯度下降的算法的基本思想就是（在定义好损失函数之后）计算损失关于各参数的梯度，使用这个梯度进行参数更新。因此我们的目标就是计算 $$ \frac{\partial L}{\partial W_1}, \frac{\partial L}{\partial W_2}, \frac{\partial L}{\partial b_1}, \frac{\partial L}{\partial b_2} $$。只需要对应网络 forward 的过程，根据链式法则即可以计算所要的梯度。以求解$$ \frac{\partial L}{\partial W_2} $$为例子，根据链式法则有：
 
@@ -182,7 +183,7 @@ b2 = np.zeros(3)
   </div>
 <!--END formula-->
 
-可以看到 $$ \frac{\partial L}{\partial h_2} $$求出来的结果非常简洁（这也是使用 softmax 做归一化的一个原因），只需要拿网络输出向量 p 减去真实标签向量 y，得到的就是 $$ h_2 $$ 关于 $$ L $$ 的梯度。  
+可以看到 $$ \frac{\partial L}{\partial h_2} $$求出来的结果非常简洁（这也是使用 softmax 做归一化的一个原因），只需要拿网络输出向量 p 减去真实标签向量 y，得到的就是 $$ h_2 $$ 关于 $$ L $$ 的梯度。
 
 回到上面的式子的第三项 $$ \frac{\partial h_2}{\partial W_2} $$，这项比较简单，求导结果为 $$ a_1 $$ 。
 
