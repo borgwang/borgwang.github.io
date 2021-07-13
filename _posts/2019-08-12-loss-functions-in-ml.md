@@ -137,23 +137,15 @@ description: 机器学习常见的损失函数小结
 
 同样的我们可以在一定的假设下使用极大似然估计得到 MAE 损失的形式，假设**模型预测与真实值之间的误差服从拉普拉斯分布 Laplace distribution**（$$\mu=0, b=1$$），则给定一个 $$x_i$$ 模型输出真实值 $$y_i$$ 的概率为
 
-<!--START formula-->
-<div class="formula">
-  $$ p(y_i|x_i) = \frac{1}{2}\exp (-\left |y_i-\hat{y_i}\right|) $$
-</div>
-<!--END formula-->
+$$ p(y_i|x_i) = \frac{1}{2}\exp (-\left |y_i-\hat{y_i}\right|) $$
 
 与上面推导 MSE 时类似，我们可以得到的负对数似然实际上就是 MAE 损失的形式
 
-<!--START formula-->
-<div class="formula">
-  $$
-  L(x, y) = \prod_{i=1}^{N}\frac{1}{2}\exp (-|y_i-\hat{y_i}|)\\
-  LL(x, y) = -\frac{N}{2} - \sum_{i=1}^{N} |y_i-\hat{y_i}| \\
-  NLL(x, y) = \sum_{i=1}^{N} |y_i-\hat{y_i}|
-  $$
-</div>
-<!--END formula-->
+$$
+L(x, y) = \prod_{i=1}^{N}\frac{1}{2}\exp (-|y_i-\hat{y_i}|)\\
+LL(x, y) = N\ln{\frac{1}{2}} - \sum_{i=1}^{N} |y_i-\hat{y_i}| \\
+NLL(x, y) = \sum_{i=1}^{N} |y_i-\hat{y_i}|
+$$
 
 <br>
 
