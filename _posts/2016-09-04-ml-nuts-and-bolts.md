@@ -354,7 +354,7 @@ description:
 
   分别在原维度（高维）和低维空间度量数据点之间的相似度（使用高斯核度量） ，得到两个相似度矩阵，通过梯度下降法最小化两个矩阵之间的 KL 散度。
 
-以上几种降维算法 Python 实现代码以及降维效果参考这个 [Demo](https://github.com/borgwang/toys/tree/master/dimensionalty_reduction)
+以上几种降维算法 Python 实现代码以及降维效果参考这个 [Demo](https://github.com/borgwang/toys/tree/master/visualization-dimensionalty-reduction)
 
 <br>
 

@@ -241,7 +241,7 @@ MyGradientBoostingRegressor train_score: 0.7171 valid_score: 0.8361
 </div>
 <!--END figure-->
 
-以上的 GBDT 分类和回归的完整代码可以在 [这里](https://github.com/borgwang/toys/blob/master/gradient_boosting/boosting.ipynb) 找到。
+以上的 GBDT 分类和回归的完整代码可以在 [这里](https://github.com/borgwang/toys/tree/master/ml-gradient-boosting) 找到。
 
 <br>
 

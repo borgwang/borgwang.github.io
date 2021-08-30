@@ -410,7 +410,7 @@ Huber Loss 结合了 MSE 和 MAE 损失，在误差接近 0 时使用 MSE，使�
 
 ### 总结
 
-本文针对机器学习中最常用的几种损失函数进行相关介绍，首先是适用于回归的均方差损失 Mean Squared Loss、平均绝对误差损失 Mean Absolute Error Loss，两者的区别以及两者相结合得到的 Huber Loss，接着是应用于分位数回归的分位数损失 Quantile Loss，表明了平均绝对误差损失实际上是分位数损失的一种特例，在分类场景下，本文讨论了最常用的交叉熵损失函数 Cross Entropy Loss，包括二分类和多分类下的形式，并从信息论的角度解释了交叉熵损失函数，最后简单介绍了应用于 SVM 中的 Hinge 损失 Hinge Loss。本文相关的可视化代码在 [这里](https://github.com/borgwang/toys/tree/master/loss_functions)。
+本文针对机器学习中最常用的几种损失函数进行相关介绍，首先是适用于回归的均方差损失 Mean Squared Loss、平均绝对误差损失 Mean Absolute Error Loss，两者的区别以及两者相结合得到的 Huber Loss，接着是应用于分位数回归的分位数损失 Quantile Loss，表明了平均绝对误差损失实际上是分位数损失的一种特例，在分类场景下，本文讨论了最常用的交叉熵损失函数 Cross Entropy Loss，包括二分类和多分类下的形式，并从信息论的角度解释了交叉熵损失函数，最后简单介绍了应用于 SVM 中的 Hinge 损失 Hinge Loss。本文相关的可视化代码在 [这里](https://github.com/borgwang/toys/tree/master/visualization-loss-functions)。
 
 受限于时间，本文还有其他许多损失函数没有提及，比如应用于 Adaboost 模型中的指数损失 Exponential Loss，0-1 损失函数等。另外通常在损失函数中还会有正则项（L1/L2 正则），这些正则项作为损失函数的一部分，通过约束参数的绝对值大小以及增加参数稀疏性来降低模型的复杂度，防止模型过拟合，这部分内容在本文中也没有详细展开。读者有兴趣可以查阅相关的资料进一步了解。
 That's all. Thanks for reading.🤘

@@ -28,9 +28,8 @@ description: SGD, Adam, RMSProp, NAG, Adadelta, Adagrad
 - [Adadelta](#adadelta)
 - [RMSProp](#rmsprop)
 - [Adam（Adaptive Moment Estimation）](#adamadaptive-moment-estimation)
-- [小结](#%e5%b0%8f%e7%bb%93)
 - [可视化](#可视化)
-- [Final words](#final-words)
+- [总结](#总结)
 
 ---
 
@@ -245,19 +244,6 @@ for i in range(steps):
 
 <br>
 
-### 小结
-
-上述几种优化方法均由梯度下降法演变而来，主要从两个方面进行改进：**动量**和**自适应学习率**。
-
-- Momentum 从动量改进（计算梯度加上动量）
-- NAG 从动量改进（先加上动量再计算梯度）
-- AdaGrad 从自适应学习率改进（使用历史梯度平方根调整学习率）
-- RMSProp 从自适应学习率改进 （使用历史梯度平方根的指数衰减调整学习率）
-- AdaDelta 在 RMSProp 基础上对梯度单位进行归一
-- Adam 则是动量和自适应学习率两方面都进行改进。一方面借鉴了 RMSProp 用历史梯度平方根指数衰减调整学习率，同时也使用了指数衰减的动量调整梯度
-
-<br>
-
 ### 可视化
 
 对上文介绍的几种优化方法进行可视化。为了方便可视化，假设参数只有两个维度，模拟生成一个损失函数的平面，上述几种优化方法在该平面上的优化路径如下图
@@ -298,20 +284,28 @@ for i in range(steps):
 <!--START video-->
 <div class="video">
     <video width="80%" controls>
-        <source src="https://raw.githubusercontent.com/borgwang/toys/master/visualize_optimization_methods/optimization_methods_video.mp4" type="video/mp4">
+        <source src="https://raw.githubusercontent.com/borgwang/toys/master/visualization-optimization-methods/optimization_methods_video.mp4" type="video/mp4">
     </video>
 </div>
 <!--END video-->
 
 <br>
 
-上述可视化的代码可以在 [这里](https://github.com/borgwang/toys/tree/master/visualize_optimization_methods) 找到，包含了生成随机光滑平面，记录的优化方法的优化路径并且可视化出来。读者有兴趣可以参考一下，也可以自己修改地图、试验观察比较其他不同的优化方法。
+上述可视化的代码可以在 [这里](https://github.com/borgwang/toys/tree/master/visualization-optimization-methods) 找到，包含了生成随机光滑平面，记录的优化方法的优化路径并且可视化出来。读者有兴趣可以参考一下，也可以自己修改地图、试验观察比较其他不同的优化方法。
 
 <br>
 
-### Final words
+### 总结
 
-本文介绍的优化方法是梯度下降及其各种改进版本，本质上都是梯度下降，都是一阶优化算法。除了梯度下降外，还有投影次梯度下降法、近端梯度下降法、坐标下降法等一阶优化算法。另外也有利用二阶导数信息的牛顿法、拟牛顿法等等。由于本文主要关注深度学习中常用的优化方法，因此对这部分算法没有展开介绍，如果读者有兴趣可以查阅相关资料深入了解。Thanks for reading.🤘
+本文描述的几种优化方法均由 vallina 梯度下降法演变而来，主要从两个方面进行改进：**动量**和**自适应学习率**。
 
+- Momentum 从动量改进（计算梯度加上动量）
+- NAG 从动量改进（先加上动量再计算梯度）
+- AdaGrad 从自适应学习率改进（使用历史梯度平方根调整学习率）
+- RMSProp 从自适应学习率改进 （使用历史梯度平方根的指数衰减调整学习率）
+- AdaDelta 在 RMSProp 基础上对梯度单位进行归一
+- Adam 则是动量和自适应学习率两方面都进行改进。一方面借鉴了 RMSProp 用历史梯度平方根指数衰减调整学习率，同时也使用了指数衰减的动量调整梯度
+
+除了梯度下降法外，还有投影次梯度下降法、近端梯度下降法、坐标下降法等一阶优化算法。另外也有利用二阶导数信息的牛顿法、拟牛顿法等等。由于本文主要关注深度学习中常用的优化方法，因此对这部分算法没有展开介绍，如果读者有兴趣可以查阅相关资料深入了解。Thanks for reading.🤘
 
 <br><br>

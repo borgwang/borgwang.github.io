@@ -32,7 +32,7 @@ description: You only have one shot.
 
 这是一个蛮有趣的 topic，不需要多少算力成本就可以 play around，周末两天尝试了一下，只使用 10 条样本，通过传统数据增强、GAN 数据增强、pretrained 模型等方法，可以在测试集上达到 68% 的预测准确率。注：笔者不是研究 zero/one/few shot learning 这个方向的，本文是探索性实验的一些结果和想法的记录，欢迎大家提意见。
 
-本文相关代码在这里: [borgwang/toys/mnist-one-shot](https://github.com/borgwang/toys/tree/master/mnist-one-shot)
+本文相关代码在这里: [borgwang/toys/ml-mnist-one-shot](https://github.com/borgwang/toys/tree/master/ml-mnist-one-shot)
 
 <br>
 

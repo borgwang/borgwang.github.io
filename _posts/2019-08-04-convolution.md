@@ -379,6 +379,6 @@ reduce 79.25% time cost
 
 第一种实现方式在测试图像上平均耗时 0.7281s，优化后的实现方式平均耗时 0.1511s，大概有了 80% 的提升。
 
-最后，本文相关的代码见 [这里](https://github.com/borgwang/toys/tree/master/visualize_convolution)。
+最后，本文相关的代码见 [这里](https://github.com/borgwang/toys/tree/master/visualization-convolution)。
 
 <br><br>

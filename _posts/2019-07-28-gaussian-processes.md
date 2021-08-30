@@ -465,7 +465,7 @@ ax.set_title("l=%.2f sigma_f=%.2f" % (gpr.params["l"], gpr.params["sigma_f"]))
 </div>
 <!--END figure-->
 
-以上完整的的代码放在 [toys/GP](https://github.com/borgwang/toys/tree/master/GP)。
+以上完整的的代码放在 [toys/GP](https://github.com/borgwang/toys/tree/master/math-GP)。
 
 <br>
 
