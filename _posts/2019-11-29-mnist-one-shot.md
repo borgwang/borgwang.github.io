@@ -14,7 +14,7 @@ description: You only have one shot.
 </div>
 <!--END figure-->
 
-#### 目录
+### 目录
 
 -   [前言](#前言)
 -   [Baseline](#Baseline)
@@ -26,24 +26,25 @@ description: You only have one shot.
 
 ---
 
-#### 前言
+### 前言
 
-前几天看到了 Michael Nielsen 的一篇挺有趣的博客 [Reduced MNIST: how well can machines learn from small data?](Reduced MNIST: how well can machines learn from small data?)，讲的是尝试用少量的样本训练一个 MNIST 分类器。众所周知，MNIST 对于现代机器学习来说是个相对简单的 task，完整的 [MNIST 数据集](http://yann.lecun.com/exdb/mnist/) 有 50k 条的训练数据，10k 条验证数据，10k 条测试数据。用现代 CNN 结构非常容易就达到 98 - 99% 的测试准确率。但是如果不用所有训练数据，只用少量的样本进行训练呢？用多少的数据可以达到一个 90%+ 的准确率，甚至更极端的，如果每个类别只用一个样本进行训练，最高能达到多少的准确率？
+最近看到 Michael Nielsen 写的一篇挺有趣的博客 [Reduced MNIST: how well can machines learn from small data?](Reduced MNIST: how well can machines learn from small data?)，讲的是尝试用少量的样本训练一个 MNIST 分类器。接触过机器学习的人应该大都知道 MNIST 数据集，一个手写体数字的数据集。MNIST 对于现代机器学习来说是个相对简单的 task，完整的 [MNIST 数据集](http://yann.lecun.com/exdb/mnist/) 有 50k 条的训练数据，10k 条验证数据，10k 条测试数据。用现代 CNN 结构非常容易就达到 98 - 99% 的测试准确率。但是如果不用所有训练数据，只用少量的样本进行训练呢？用多少的数据可以达到一个 90%+ 的准确率，甚至更极端的，如果每个类别只用一个样本进行训练，最高能达到多少的准确率？
 
-这是一个蛮有趣的 topic，不需要多少算力成本就可以 play around，周末两天尝试了一下，只使用 10 条样本，通过传统数据增强、GAN 数据增强、pretrained 模型等方法，可以在测试集上达到 68% 的预测准确率。注：笔者不是研究 zero/one/few shot learning 这个方向的，本文是探索性实验的一些结果和想法的记录，欢迎大家提意见。
+
+这是一个蛮有趣的 topic，不需要多少算力成本就可以 play around，周末两天尝试了一下，只使用 10 条样本训练，通过传统数据增强、GAN 数据增强、pretrained 模型等方法，可以在完整测试集上达到 68% 的预测准确率。笔者不是研究 zero/one/few shot learning 这个方向的，本文是探索性实验的一些结果和想法的记录，欢迎大家提意见。
 
 本文相关代码在这里: [borgwang/toys/ml-mnist-one-shot](https://github.com/borgwang/toys/tree/master/ml-mnist-one-shot)
 
 <br>
 
-#### Baseline
+### Baseline
 
 首先先拿经典的统计机器学习模型的效果作为 Baseline。数据方面需要从完整训练集中抽取十个样本（每个类别一个样本），设置 3 个不同的随机种子，抽出来的 3 个训练集如下
 
 <!--START figure-->
 <div class="figure">
   <a href="https://tva1.sinaimg.cn/large/006y8mN6ly1g99gqz8qnfj30fy0bo752.jpg" data-lightbox="mnist-sample">
-    <img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g99gqz8qnfj30fy0bo752.jpg" width="70%" alt="mnist-sample" referrerPolicy="no-referrer"/>
+    <img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g99gqz8qnfj30fy0bo752.jpg" width="60%" alt="mnist-sample" referrerPolicy="no-referrer"/>
   </a>
 </div>
 <!--END figure-->
@@ -76,7 +77,7 @@ description: You only have one shot.
 
 <br>
 
-#### 改进方向 1：数据增强
+### 改进方向 1：数据增强
 
 可以看到，无论是传统机器学习模型还是深度学习模型，在只有 10 个样本的情况下单纯通过调参已经比较难以进一步提升了。可以想到的第一个改进的方向就是数据增强，通过对 10 个样本进行拉伸、旋转、扭曲等，理论上应该可以增加数据多样性，减缓模型过拟合。
 
@@ -131,7 +132,7 @@ p.shear(probability=0.5, max_shear_left=3, max_shear_right=3)
 
 <br>
 
-#### 改进方向 2 ：利用 GAN 生成 fake 样本辅助训练
+### 改进方向 2 ：利用 GAN 生成 fake 样本辅助训练
 
 GAN（[Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)） 是一种生成模型，可以生成非常逼真的图片，能否利用 GAN 来生成一些 fake 的训练样本作为辅助训练数据呢？答案是可以的。vanilla GAN 生成图片是从一个分布中采样一个向量，然后基于该向量去生成图片，这里我们需要的不仅仅是图片，还需要图片对应的标签，使用 CGAN ([Conditional Generative Adversarial Nets](https://arxiv.org/abs/1411.1784)）可以满足需求。CGAN 的网络结构如下图，基本上 CGAN 与 GAN 区别在于，无论是 generator 还是 discriminator 的输入都 concat 了类别的信息，这样使得模型在生成样本时可以指定生成某个类别的样本。更多关于CGAN 的细节有兴趣的读者可以去阅读原 paper。
 
@@ -168,11 +169,11 @@ GAN（[Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)） 是�
 
 <br>
 
-#### 改进方向 3：Transfer Learning
+### 改进方向 3：Transfer Learning
 
-前两个改进方向是在数据上面做文章，另一个方向是可以考虑迁移学习 Transfer Learning，这个也是图像task 中常用的一种方法，即使用在大型数据集上面预训练的模型作为初始模型，基于自己的 task 进行 fine-tune。由于 pretrain 的模型已经具备了抽取图像特征的能力，因此理论上应该会对模型精度有所提升。
+前两个改进方向是在数据上面做文章，另一个方向是可以考虑迁移学习 Transfer Learning，使用在大型数据集如 ImageNet 上面预训练的模型作为初始模型，针对自己的 task 进行 fine-tune。由于 pretrain 的模型已经具备了抽取图像特征的能力，因此理论上应该会对模型精度有所提升。
 
-这里使用了在 ImageNet 上 pretrained ResNet-18 模型，因为ImageNet 的输入图像尺寸是 (224, 224, 3) 因此需要进行调整：首先将 MNIST 的数据从 (28, 28, 1) resize 为 (224, 224, 1)，然后在 pretrained 的模型前面加多一层 kernel 为 1 的卷积层，将 channel 从 1 转化为 3，后面接上 pretrained 的 ResNet-18。
+这里使用了在 ImageNet 上 pretrained ResNet-18 模型，因为 ImageNet 的输入图像尺寸是 (224, 224, 3) 因此需要进行调整：首先将 MNIST 的数据从 (28, 28, 1) 调整为 (224, 224, 1)，然后在 pretrained 的模型前面加多一层 kernel 为 1 的卷积层，将 channel 从 1 转化为 3，后面接上 pretrained 的 ResNet-18。
 
 ```python
 from torchvision.models import resnet18
@@ -203,18 +204,16 @@ class MnistResNet(nn.Module):
 
 <br>
 
-#### 一些后续可以尝试的点
+### 一些后续可以尝试的点
 
 -   训练一个更好的生成模型 （CGAN、InfoGAN）
 -   设计网络结构。one-shot learning 领域中提出了一些基于比较的网络结构，如 [Siamese Neural Networks](https://www.cs.cmu.edu/~rsalakhu/papers/oneshot1.pdf)、[Relation Networks](https://arxiv.org/abs/1711.06025)、[Matching Networks](https://arxiv.org/abs/1606.04080) 等，大概的思路是将不同类别样本分类器输出应该不同这个信息利用起来
-
 -   更复杂的数据增强。考虑从特征方面进行数据增强，如使用一些非监督的模型如 VAE 等生成图像特征加以利用
-
 -   使用更大更深的 pretrained 模型？
 
 <br>
 
-#### 参考文献
+### 参考文献
 
 -   [Reduced MNIST: how well can machines learn from small data?](http://cognitivemedium.com/rmnist)
 -   [Conditional Generative Adversarial Nets](https://arxiv.org/pdf/1411.1784.pdf)
